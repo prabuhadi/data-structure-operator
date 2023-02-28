@@ -51,6 +51,10 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}.`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients);
+  },
 };
 
 restaurant.orderDelivery({
@@ -89,12 +93,12 @@ const obj = { a: 23, b: 30, c: 34 };
 console.log(a, b);
 
 // Nested object //
-const {
-  thu: { open: o, close: c },
-  fri,
-  sat,
-} = openingHours;
-console.log(o, c);
+// const {
+//   thu: { open: o, close: c },
+//   fri,
+//   sat,
+// } = openingHours;
+// console.log(o, c);
 
 // Destructuring Array //
 /*
@@ -133,6 +137,40 @@ console.log(one, four);
 const [i = 2, j = 2, k = 2] = [8];
 console.log(i, j, k);
 */
+
+///////////* Destructuring *////////////
+// SPREAD, because on right side of (=)
+const arrSpread = [1, 2, ...[3, 4]];
+console.log(arrSpread);
+
+// REST, because on left side of (=)
+const [n, m, ...other] = [1, 2, 3, 4, 5];
+console.log(n, m, other);
+
+const [pizza, risotto, ...others] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, others);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+///////////* Functions *////////////
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 5, 2, 1, 4, 1, 6, 5);
+const q = [12, 52, 32];
+add(...q);
+
+restaurant.orderPizza('dough', 'mashrooms', 'onion', 'spinach');
+restaurant.orderPizza('sausage');
 
 // Spread Operator //
 const arr = [7, 8, 9];
