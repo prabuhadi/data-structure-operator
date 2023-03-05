@@ -140,37 +140,38 @@ console.log(i, j, k);
 
 ///////////* Destructuring *////////////
 // SPREAD, because on right side of (=)
-const arrSpread = [1, 2, ...[3, 4]];
-console.log(arrSpread);
+// const arrSpread = [1, 2, ...[3, 4]];
+// console.log(arrSpread);
 
-// REST, because on left side of (=)
-const [n, m, ...other] = [1, 2, 3, 4, 5];
-console.log(n, m, other);
+// // REST, because on left side of (=)
+// const [n, m, ...other] = [1, 2, 3, 4, 5];
+// console.log(n, m, other);
 
-const [pizza, risotto, ...others] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, others);
+// const [pizza, risotto, ...others] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, others);
 
-// Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays);
+// // Objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
 
-///////////* Functions *////////////
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 5, 2, 1, 4, 1, 6, 5);
-const q = [12, 52, 32];
-add(...q);
+// ///////////* Functions *////////////
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
 
-restaurant.orderPizza('dough', 'mashrooms', 'onion', 'spinach');
-restaurant.orderPizza('sausage');
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 5, 2, 1, 4, 1, 6, 5);
+// const q = [12, 52, 32];
+// add(...q);
+
+// restaurant.orderPizza('dough', 'mashrooms', 'onion', 'spinach');
+// restaurant.orderPizza('sausage');
 
 // Spread Operator //
 const arr = [7, 8, 9];
@@ -217,3 +218,34 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Restorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+// Short Circuiting
+
+console.log(3 || 'Prabu');
+console.log('' || 'Prabu');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// restaurant.numGuests = 23;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 'No visitor';
+console.log(guest1);
+
+// truthy value will print to console first if undefined (false) print 2nd truthy
+const guest2 = restaurant.numGuests || 'No visitor';
+console.log(guest2);
+
+// Opposite of OR
+console.log(3 && 'Prabu');
+console.log('' && 'Prabu');
+console.log(true && 0);
+console.log(undefined && null);
+
+console.log('Hello' && 23 && null && 'Jonas');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushroam', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushroam', 'spinach');
