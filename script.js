@@ -228,13 +228,17 @@ console.log(undefined || null);
 
 console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 
-// restaurant.numGuests = 23;
+restaurant.numGuests = 0;
 const guest1 = restaurant.numGuests ? restaurant.numGuests : 'No visitor';
 console.log(guest1);
 
 // truthy value will print to console first if undefined (false) print 2nd truthy
 const guest2 = restaurant.numGuests || 'No visitor';
 console.log(guest2);
+
+// nullish assignment operator (null or undifined)
+const guestZero = restaurant.numGuests ?? 'No visitor';
+console.log(guestZero);
 
 // Opposite of OR
 console.log(3 && 'Prabu');
@@ -249,3 +253,25 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushroam', 'spinach');
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 0,
+  // numGuests: 20,
+};
+const rest2 = {
+  name: 'La Rissa',
+  owner: 'Geo Vanni',
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+rest1.owner &&= 'Anonymous';
+rest2.owner &&= 'Anonymous';
+
+console.log(rest1, rest2);
